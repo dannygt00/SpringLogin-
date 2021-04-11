@@ -1,10 +1,9 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package registration;
 
+import com.registration.demo.appUser.AppUser;
+import com.registration.demo.appUser.AppUserRole;
+import com.registration.demo.appUser.AppUserService;
+import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
 /**
@@ -12,9 +11,27 @@ import org.springframework.stereotype.Service;
  * @author danielramirez
  */
 @Service
+@AllArgsConstructor
 public class RegistrationService {
+    
+    private final EmailValidator emailValidator;
+    private final AppUserService appUserService;
+    
     public String register(RegistrationRequest request){
-        return "works"; 
+        boolean isValidEmail = emailValidator.
+                test(request.getEmail());
+        
+        if(!isValidEmail){
+            throw new IllegalStateException("email not valid");
+        }
+        
+        return appUserService.signUpUser(
+                new AppUser(
+                request.getFirstName(),
+                request.getLastName(),
+                request.getEmail(),
+                request.getPassword(),
+                        AppUserRole.USER));
     }
     
 }
