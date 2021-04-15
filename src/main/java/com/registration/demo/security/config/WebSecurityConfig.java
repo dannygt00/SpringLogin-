@@ -1,9 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-package security.config;
+package com.registration.demo.security.config;
 
 import com.registration.demo.appUser.AppUserService;
 import lombok.AllArgsConstructor;
@@ -29,10 +24,10 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         http
                 .csrf().disable()
                 .authorizeRequests()
+                .antMatchers("/api/v*/com.registration.demo.registration/**")
+                .permitAll()
                 .anyRequest()
-                .authenticated()
-                .antMatchers("/api/v*/registration/**").permitAll()
-                .and()
+                .authenticated().and()
                 .formLogin();
     }
 
@@ -43,11 +38,10 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Bean
     public DaoAuthenticationProvider daoAuthenticationProvider() {
-        DaoAuthenticationProvider provider
-                = new DaoAuthenticationProvider();
+        DaoAuthenticationProvider provider =
+                new DaoAuthenticationProvider();
         provider.setPasswordEncoder(bCryptPasswordEncoder);
         provider.setUserDetailsService(appUserService);
         return provider;
     }
-
 }

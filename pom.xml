@@ -11,8 +11,8 @@
 	<groupId>com.registration</groupId>
 	<artifactId>demo</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>registration </name>
-	<description>Creates login and registration</description>
+	<name>com.registration.demo.registration </name>
+	<description>Creates login and com.registration.demo.registration</description>
 	<properties>
 		<java.version>11</java.version>
 	</properties>

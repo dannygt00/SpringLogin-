@@ -3,17 +3,13 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package registration;
+package com.registration.demo.registration;
 
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.ToString;
 
-/**
- *
- * @author danielramirez
- */
 @Getter
 @AllArgsConstructor
 @EqualsAndHashCode
