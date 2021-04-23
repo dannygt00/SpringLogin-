@@ -45,6 +45,6 @@ public class AppUserService implements UserDetailsService {
 
         appUserRepository.save(appUser);
 
-        return "";
+        return "it works";
     }
 }
